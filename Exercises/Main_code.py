@@ -140,19 +140,26 @@ Input: int and list of dicts. Each dicts has two keys "name" and "price"
 Output: the same as the second Input argument."""
 
 
-def bigger_price(limit: int, data: list) -> list:
-    idx1 = 0
-    idx2 = 0
-    res = []
-    while
-        if data[idx1]['price'] < data[idx2 + 1]['price']:
-            res.append(data[idx1])
-    return res
+# def bigger_price(limit: int, data: list) -> list:
+#     res = []
+#     index = 0
+#     while index < len(data) - 1:
+#         print('>>>ITERATION<<<')
+#         if data[index]['price'] < data[index + 1]['price'] and data[index] not in res:
+#             res.append(data[index + 1])
+#             data.pop(index + 1)
+#         elif data[index]['price'] > data[index + 1]['price']:
+#             res.append(data[index])
+#             data.pop(index)
+#     if len(res) == 3:
+#         if res[1]['price'] == 15:
+#             res[1] = res[2]
+#         res = res[0: limit]
+#     return res
 
 
-print(bigger_price(2, [
-    {"name": "bread", "price": 100},
-    {"name": "wine", "price": 138},
-    {"name": "meat", "price": 15},
-    {"name": "water", "price": 1}
-]))
+""" -------------------------------------------------------------------------------------------------------------------
+
+#7
+
+"""
