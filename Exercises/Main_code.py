@@ -97,7 +97,6 @@ Input: A Str.
 
 Output: An Int."""
 
-
 # def count_digits(text: str) -> int:
 #     res = 0
 #     for x in text:
@@ -115,7 +114,6 @@ In a given string you should reverse every word, but the words should stay in th
 Input: A string.
 
 Output: A string."""
-
 
 # def backward_string_by_word(text: str) -> str:
 #     if not text:
@@ -141,3 +139,20 @@ Input: int and list of dicts. Each dicts has two keys "name" and "price"
 
 Output: the same as the second Input argument."""
 
+
+def bigger_price(limit: int, data: list) -> list:
+    idx1 = 0
+    idx2 = 0
+    res = []
+    while
+        if data[idx1]['price'] < data[idx2 + 1]['price']:
+            res.append(data[idx1])
+    return res
+
+
+print(bigger_price(2, [
+    {"name": "bread", "price": 100},
+    {"name": "wine", "price": 138},
+    {"name": "meat", "price": 15},
+    {"name": "water", "price": 1}
+]))
