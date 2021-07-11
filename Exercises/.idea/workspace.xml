@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1f715f5-57e4-444e-b964-a041cf6f6ec6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Minor_tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main_code.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main_code.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Minor_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/Minor_tests.py" afterDir="false" />
     </list>
+    <list id="af8670ce-0428-45a1-819a-a2508a2206a9" name="321312" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +42,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="MTHome" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunManager" selected="Python.Main_code (1)">
     <configuration name="Main_code (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -118,6 +119,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="d1f715f5-57e4-444e-b964-a041cf6f6ec6" name="Default Changelist" comment="" />
+      <changelist id="af8670ce-0428-45a1-819a-a2508a2206a9" name="321312" comment="" />
       <created>1626007448614</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

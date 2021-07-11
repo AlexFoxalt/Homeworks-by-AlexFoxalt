@@ -91,4 +91,53 @@ Output: The difference between the dates in days as an integer."""
 
 #4
 
-"""
+You need to count the number of digits in a given string.
+
+Input: A Str.
+
+Output: An Int."""
+
+
+# def count_digits(text: str) -> int:
+#     res = 0
+#     for x in text:
+#         if x.isdigit():
+#             res += 1
+#     return res
+
+
+""" -------------------------------------------------------------------------------------------------------------------
+
+#5
+
+In a given string you should reverse every word, but the words should stay in their places.
+
+Input: A string.
+
+Output: A string."""
+
+
+# def backward_string_by_word(text: str) -> str:
+#     if not text:
+#         return ''
+#     list_x = text.split(' ')
+#     new_list = []
+#     for x in list_x:
+#         new_list.append(x[::-1])
+#     res = ' '.join(new_list)
+#     return res
+
+
+""" -------------------------------------------------------------------------------------------------------------------
+
+#6
+
+You have a table with all available goods in the store. The data is represented as a list of dicts
+
+Your mission here is to find the TOP most expensive goods. The amount we are looking for will be given as a first 
+argument and the whole data as the second one 
+
+Input: int and list of dicts. Each dicts has two keys "name" and "price"
+
+Output: the same as the second Input argument."""
+
