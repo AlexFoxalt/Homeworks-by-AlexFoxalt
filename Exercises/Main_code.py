@@ -210,7 +210,76 @@ in a given list only once). When solving this task, do not change the order of t
 
 Input: A list of integers.
 
-Output: An iterable of integers.
+Output: An iterable of integers."""
+
+
+def checkio1(data: list) -> list:
+    res = []
+    for x in data:
+        if x in data[data.index(x) + 1:]:
+            res.append(x)
+    return res
+
+
+""" -------------------------------------------------------------------------------------------------------------------
+
+#9
+
+In this mission your task is to determine the popularity of certain words in the text.
+
+At the input of your function are given 2 arguments: the text and the array of words the popularity of which you need 
+to determine. 
+
+When solving this task pay attention to the following points:
+
+The words should be sought in all registers. This means that if you need to find a word "one" then words like "one", 
+"One", "oNe", "ONE" etc. will do. The search words are always indicated in the lowercase. If the word wasn’t found 
+even once, it has to be returned in the dictionary with 0 (zero) value. Input: The text and the search words array. 
+
+Output: The dictionary where the search words are the keys and values are the number of times when those words are 
+occurring in a given text. """
+
+
+def popular_words(text: str, words: list) -> dict:
+    text_list = text.lower().split()
+    print(text_list)
+    res = {}
+    for word_check in words:
+        counter = 0
+        idx = 0
+        while idx < len(text_list):
+            if word_check == text_list[idx]:
+                counter += 1
+                idx += 1
+            elif word_check != text_list[idx]:
+                idx += 1
+        new_dict = {word_check: counter}
+        res.update(new_dict)
+    return res
+
+
+""" -------------------------------------------------------------------------------------------------------------------
+
+#10
+
+You are given two strings and you have to find an index of the second occurrence of the second string in the first one.
+
+Let's go through the first example where you need to find the second occurrence of "s" in a word "sims". It’s easy to 
+find its first occurrence with a function index or find which will point out that "s" is the first symbol in a word 
+"sims" and therefore the index of the first occurrence is 0. But we have to find the second "s" which is 4th in a row 
+and that means that the index of the second occurrence (and the answer to a question) is 3. 
+
+Input: Two strings.
+
+Output: Int or None"""
+
+
+def second_index(text: str, symbol: str) -> [int, None]:
+    return text.find(symbol, text.index(symbol) + 1) if text.count(symbol) > 1 else None
+
+
+""" -------------------------------------------------------------------------------------------------------------------
+
+#11
+
 """
-
-
