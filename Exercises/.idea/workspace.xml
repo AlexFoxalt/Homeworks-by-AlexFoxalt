@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d1f715f5-57e4-444e-b964-a041cf6f6ec6" name="Default Changelist" comment="123">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MAIN.py" beforeDir="false" afterPath="$PROJECT_DIR$/MAIN.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MAJOR_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/MAJOR_tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/MAIN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minor_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/minor_tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minor_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/minor_tests.py" afterDir="false" />
     </list>
     <list id="af8670ce-0428-45a1-819a-a2508a2206a9" name="321312" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +46,27 @@
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunManager" selected="Python.MAJOR_tests">
+    <configuration name="MAIN (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Exercises" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MAIN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="MAIN" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Exercises" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -155,6 +176,7 @@
       <list>
         <item itemvalue="Python.MAJOR_tests" />
         <item itemvalue="Python.minor_tests (1)" />
+        <item itemvalue="Python.MAIN (1)" />
         <item itemvalue="Python.minor_tests" />
         <item itemvalue="Python.MAIN" />
       </list>
@@ -198,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626099100542</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="123">
+      <created>1626118492223</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1626118492223</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

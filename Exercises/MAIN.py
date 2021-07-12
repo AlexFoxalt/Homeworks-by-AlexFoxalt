@@ -417,3 +417,98 @@ def all_the_same(elements: List[Any]) -> bool:
     return True if len(set(elements)) <= 1 else False
 
 
+""" -------------------------------------------------------------------------------------------------------------------
+
+#16
+
+Computer date and time format consists only of numbers, for example: 21.05.2018 16:30
+Humans prefer to see something like this: 21 May 2018 year, 16 hours 30 minutes
+Your task is simple - convert the input date and time from computer format into a "human" format.
+
+Input: Date and time as a string
+
+Output: The same date and time, but in a more readable format"""
+
+monthes = {'01': 'January',
+           '02': 'February',
+           '03': 'March',
+           '04': 'April',
+           '05': 'May',
+           '06': 'June',
+           '07': 'July',
+           '08': 'August',
+           '09': 'September',
+           '10': 'October',
+           '11': 'November',
+           '12': 'December',
+           }
+
+
+def date_time(time: str) -> str:
+    time = time.split(' ')
+    date = time[0].split('.')
+    date[0] = int(date[0])
+    date_min = time[1].split(':')
+    date_min = int(date_min[0]), int(date_min[1])
+    if date_min[0] == 1:
+        hours = 'hour'
+    else:
+        hours = 'hours'
+    if date_min[1] == 1:
+        minutes = 'minute'
+    else:
+        minutes = 'minutes'
+    res = str(date[0]), monthes.get(date[1]), date[2], 'year', str(date_min[0]), hours, str(date_min[1]), minutes
+    return ' '.join(res)
+
+
+""" -------------------------------------------------------------------------------------------------------------------
+
+#17
+
+Your task is to decrypt the secret message using the Morse code .
+The message will consist of words with 3 spaces between them and 1 space between each letter of each word.
+If the decrypted text starts with a letter then you'll have to print this letter in uppercase.
+
+Input: The secret message.
+
+Output: The decrypted text."""
+
+MORSE = {'.-': 'a', '-...': 'b', '-.-.': 'c',
+         '-..': 'd', '.': 'e', '..-.': 'f',
+         '--.': 'g', '....': 'h', '..': 'i',
+         '.---': 'j', '-.-': 'k', '.-..': 'l',
+         '--': 'm', '-.': 'n', '---': 'o',
+         '.--.': 'p', '--.-': 'q', '.-.': 'r',
+         '...': 's', '-': 't', '..-': 'u',
+         '...-': 'v', '.--': 'w', '-..-': 'x',
+         '-.--': 'y', '--..': 'z', '-----': '0',
+         '.----': '1', '..---': '2', '...--': '3',
+         '....-': '4', '.....': '5', '-....': '6',
+         '--...': '7', '---..': '8', '----.': '9'
+         }
+
+
+def morse_decoder(code):
+    code = code.split(' ')
+    res = []
+    for word in code:
+        if word in MORSE:
+            res.append(MORSE.get(word))
+        else:
+            res.append(' ')
+    print(res)
+    idx = 0
+    while idx < len(res) - 1:
+        if res[idx] == ' ' == res[idx + 1]:
+            res.pop(idx)
+        else:
+            idx += 1
+    return ''.join(res).capitalize()
+
+
+""" -------------------------------------------------------------------------------------------------------------------
+
+#18
+
+"""
