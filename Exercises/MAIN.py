@@ -132,7 +132,7 @@ def backward_string_by_word(text: str) -> str:
 
 """ -------------------------------------------------------------------------------------------------------------------
 
-#6
+#6 ***TODO***
 
 You have a table with all available goods in the store. The data is represented as a list of dicts
 
@@ -282,4 +282,138 @@ def second_index(text: str, symbol: str) -> [int, None]:
 
 #11
 
-"""
+Sort the given iterable so that its elements end up in the decreasing frequency order, that is, the number of times 
+they appear in elements. If two elements have the same frequency, they should end up in the same order as the first 
+appearance in the iterable. 
+
+Input: Iterable
+
+Output: Iterable"""
+
+
+def frequency_sort(items):
+    return list(sorted(items, key=lambda x: (items.count(x), items.index(x)), reverse=True))
+
+
+""" -------------------------------------------------------------------------------------------------------------------
+
+#12
+
+Almost everyone in the world knows about the ancient game Chess and has at least a basic understanding of its rules. 
+It has various units with a wide range of movement patterns allowing for a huge number of possible different game 
+positions (for example Number of possible chess games at the end of the n-th plies. ) For this mission, 
+we will examine the movements and behavior of chess pawns. 
+
+Chess is a two-player strategy game played on a checkered game board laid out in eight rows (called ranks and denoted 
+with numbers 1 to 8) and eight columns (called files and denoted with letters a to h) of squares. Each square of the 
+chessboard is identified by a unique coordinate pair — a letter and a number (ex, "a1", "h8", "d6"). For this mission 
+we only need to concern ourselves with pawns. A pawn may capture an opponent's piece on a square diagonally in front 
+of it on an adjacent file, by moving to that square. For white pawns the front squares are squares with greater row 
+number than the square they currently occupy. 
+
+A pawn is generally a weak unit, but we have 8 of them which we can use to build a pawn defense wall. With this 
+strategy, one pawn defends the others. A pawn is safe if another pawn can capture a unit on that square. We have 
+several white pawns on the chess board and only white pawns. You should design your code to find how many pawns are 
+safe. 
+
+You are given a set of square coordinates where we have placed white pawns. You should count how many pawns are safe.
+
+Input: Placed pawns coordinates as a set of strings.
+
+Output: The number of safe pawns as a integer."""
+
+
+def safe_pawns(pawns: set) -> int:
+    pawns = list(pawns)
+    numbers = ['1', '2', '3', '4', '5', '6', '7', '8']
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+    safe_counter = 0
+    for pawn in pawns:
+        if pawn[0] != 'a' and pawn[0] != 'h' and pawn[1] != '1':
+            if letters[letters.index(pawn[0]) - 1] + numbers[numbers.index(pawn[1]) - 1] in pawns or \
+                    letters[letters.index(pawn[0]) + 1] + numbers[numbers.index(pawn[1]) - 1] in pawns:
+                safe_counter += 1
+        elif pawn[0] == 'a' and pawn[1] != '1':
+            if letters[letters.index(pawn[0]) + 1] + numbers[numbers.index(pawn[1]) - 1] in pawns:
+                safe_counter += 1
+        elif pawn[0] == 'h' and pawn[1] != '1':
+            if letters[letters.index(pawn[0]) - 1] + numbers[numbers.index(pawn[1]) - 1] in pawns:
+                safe_counter += 1
+    return safe_counter
+
+
+""" -------------------------------------------------------------------------------------------------------------------
+
+#13
+
+Every true traveler must know how to do 3 things: fix the fire, find the water and extract useful information from 
+the nature around him. Programming won't help you with the fire and water, but when it comes to the information 
+extraction - it might be just the thing you need. 
+
+Your task is to find the angle of the sun above the horizon knowing the time of the day. Input data: the sun rises in 
+the East at 6:00 AM, which corresponds to the angle of 0 degrees. At 12:00 PM the sun reaches its zenith, which means 
+that the angle equals 90 degrees. 6:00 PM is the time of the sunset so the angle is 180 degrees. If the input will be 
+the time of the night (before 6:00 AM or after 6:00 PM), your function should return - "I don't see the sun!". 
+
+Input: The time of the day.
+
+Output: The angle of the sun, rounded to 2 decimal places."""
+
+
+def sun_angle(time: str):
+    time = time.split(':')
+    try:
+        time[0] = int(time[0])
+        time[1] = int(time[1])
+    except Exception:
+        '123'
+    minutes = int(time[0] * 60 + time[1])
+    if 360 <= minutes <= 1080:
+        res = float((minutes - 360) * 0.25)
+        res = float('{:.2f}'.format(res))
+        return res
+    else:
+        return "I don't see the sun!"
+
+
+""" -------------------------------------------------------------------------------------------------------------------
+
+#14
+
+You have to split a given array into two arrays. If it has an odd amount of elements, then the first array should 
+have more elements. If it has no elements, then two empty arrays should be returned. 
+
+example
+
+Input: Array.
+
+Output: Array or two arrays."""
+
+
+def split_list(items: list) -> list:
+    if len(items) % 2 == 0:
+        list1 = items[:int(len(items) / 2)]
+        list2 = items[int(len(items) / 2):]
+    else:
+        list1 = items[:int(len(items) / 2) + 1]
+        list2 = items[int(len(items) / 2 + 1):]
+    return list1, list2
+
+
+""" -------------------------------------------------------------------------------------------------------------------
+
+#15
+
+In this mission you should check if all elements in the given list are equal.
+
+Input: List.
+
+Output: Bool."""
+
+from typing import List, Any
+
+
+def all_the_same(elements: List[Any]) -> bool:
+    return True if len(set(elements)) <= 1 else False
+
+

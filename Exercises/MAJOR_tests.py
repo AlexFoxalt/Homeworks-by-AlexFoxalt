@@ -1,5 +1,8 @@
-def second_index(text: str, symbol: str) -> [int, None]:
-    return text.find(symbol, text.index(symbol) + 1) if text.count(symbol) > 1 else None
+from typing import List, Any
 
 
-print(second_index("hi mayor", " "))
+def all_the_same(elements: List[Any]) -> bool:
+    return True if len(set(elements)) <= 1 else False
+
+
+print(all_the_same([1, 1, 1]))
