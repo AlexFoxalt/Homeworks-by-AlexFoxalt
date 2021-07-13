@@ -92,14 +92,14 @@ def end_game():
             restart_answer = input(
                 f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
                 f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
-                f"random number?(Y): ")
+                f"random number?(Y/else=exit): ")
             if restart_answer.upper() == "Y":
                 mid_game()
             else:
                 print("Good bye, my little magician!......or cheater, who knows......")
                 sys.exit()
         elif answer != SECRET_NUMBER[0]:
-            restart_answer = input("I'm sorry, but not this time... Do you want one more chance?(Y): ")
+            restart_answer = input("I'm sorry, but not this time... Do you want to have one more chance?(Y/else=exit): ")
             if restart_answer.upper() == 'Y':
                 end_game()
             else:
@@ -108,7 +108,7 @@ def end_game():
 
 
 def advanced_end_game():
-    """Advanced main function, collecting data from gamer, and return a result"""
+    """Advanced main function, attempts are limited."""
     while True:
         answer = input("Try to guess it: ")
         answer = int_made(answer)
@@ -120,7 +120,7 @@ def advanced_end_game():
             restart_answer = input(
                 f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
                 f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
-                f"random number?(Y): ")
+                f"random number?(Y/else=exit): ")
             if restart_answer.upper() == "Y":
                 advanced_mid_game()
             else:
@@ -132,7 +132,7 @@ def advanced_end_game():
                 print(f"You lost! Good luck next time! My number was: {SECRET_NUMBER[0]}!")
                 sys.exit()
             restart_answer = input(f"Attempts left: {NUMBER_OF_ATTEMPTS[0]}! I'm sorry, but not this time... Do you "
-                                   f"want one more chance?(Y): ")
+                                   f"want to have one more chance?(Y/else=exit): ")
             if restart_answer.upper() == 'Y':
                 advanced_end_game()
             else:
@@ -141,7 +141,7 @@ def advanced_end_game():
 
 
 def advanced_end_game_with_help():
-    """Advanced main function, collecting data from gamer, and return a result"""
+    """Advanced main function, attempts are limited, help tips added."""
     while True:
         answer = input("Try to guess it: ")
         answer = int_made(answer)
@@ -153,7 +153,7 @@ def advanced_end_game_with_help():
             restart_answer = input(
                 f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
                 f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
-                f"random number?(Y): ")
+                f"random number?(Y/else=exit): ")
             if restart_answer.upper() == "Y":
                 advanced_mid_game()
             else:
@@ -172,7 +172,8 @@ def advanced_end_game_with_help():
             else:
                 help_tip = ".cold.(10+)"
             restart_answer = input(f"Attempts left: {NUMBER_OF_ATTEMPTS[0]}! I'm sorry, but not this time... Okay, "
-                                   f"i'll help you...this time...you was: {help_tip}\nDo you want one more chance?(Y): ")
+                                   f"i'll help you...this time...you was: {help_tip}\nDo you want to have one more "
+                                   f"chance?(Y/else=exit): ")
             if restart_answer.upper() == 'Y':
                 advanced_end_game_with_help()
             else:
@@ -184,17 +185,17 @@ def advanced_end_game_with_help():
 
 
 def game_diff_easy():
-    """Easy mode: Endlessly trying, quit any time """
+    """Easy mode: Endlessly trying, quit any time. """
     early_game()
-    print('Difficult: easy')
+    print('Difficult: Easy')
     mid_game()
     end_game()
 
 
 def game_diff_middle():
-    """Mid difficult: Attempts are limited, range of random number is chosen, help tips available"""
+    """Mid difficult: Attempts are limited, range of random number is chosen, help tips are available."""
     early_game()
-    print("Difficult: middle")
+    print("Difficult: Middle")
     print("Now you have to choose the number of attempts for which you think you will guess the number, \nas well as "
           'the range of numbers from which I will choose a random one.\n===MIDDLE DIFFICULT FEATURE===\nAfter every '
           "failed attempt, i'll help you a bit. If your guessed number will be in range:\na. *your number's range* "
@@ -205,16 +206,20 @@ def game_diff_middle():
 
 
 def game_diff_hard():
-    """Hard difficult: Attempts are limited, range of random number is chosen, help tips NOT available"""
+    """Hard difficult: Attempts are limited, range of random number is chosen, help tips are NOT available."""
     early_game()
-    print("Difficult: hard")
+    print("Difficult: Hard")
     print("Now you have to choose the number of attempts for which you think you will guess my number, \nas well as "
           "the range of numbers from which I will choose a random one.")
     advanced_mid_game()
     advanced_end_game()
 
 
+"""------------------------------------------------------------------------------------------------------------------"""
+
+
 def start():
+    """Game launcher"""
     res = input("Hello! It my name is Bill Cipher and it's my game! First of all choose the difficult (easy, mid, "
                 "hard): ").lower()
     if res == 'easy':
@@ -228,7 +233,7 @@ def start():
         start()
 
 
-start()                                                           # If you want to start the game- activate this line
+# start()                                                           # If you want to start the game- activate this line
 
 
-""" Не знаю, может наделал лишних опций, но решил что если это игра, она должна быть полноцнная и не сухая. """
+""" Не знаю, может наделал много лишних опций, но решил, что если это игра, она должна быть интересная и не сухая. """

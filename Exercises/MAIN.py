@@ -511,4 +511,72 @@ def morse_decoder(code):
 
 #18
 
-"""
+You are given a list of files. You need to sort this list by the file extension. The files with the same extension should be sorted by name.
+
+Some possible cases:
+
+Filename cannot be an empty string;
+Files without the extension should go before the files with one;
+Filename ".config" has an empty extension and a name ".config";
+Filename "config." has an empty extension and a name "config.";
+Filename "table.imp.xls" has an extension "xls" and a name "table.imp";
+Filename ".imp.xls" has an extension "xls" and a name ".imp".
+Input: A list of filenames.
+
+Output: A list of filenames."""
+
+from typing import List
+
+
+def sort_by_ext(files: List[str]) -> List[str]:
+    return list(sorted(files, key=lambda x: (x.split('.'[-1]), x.split('.'[-1])[1])))
+
+
+print(sort_by_ext(['1.cad', '1.bat', '1.aa', '2.bat']))
+
+
+""" -------------------------------------------------------------------------------------------------------------------
+
+#~
+
+Encode and Decode"""
+
+
+x_decode = {'1': 'A',
+            '2': 'B',
+            '3': 'C',
+            '4': 'D',
+            '5': 'E',
+            '6': 'F',
+            '7': 'G',
+            '8': 'H',
+            '9': 'I',
+            '10': 'J',
+            '11': 'K',
+            '12': 'L',
+            '13': 'M',
+            '14': 'N',
+            '15': 'O',
+            '16': 'P',
+            '17': 'Q',
+            '18': 'R',
+            '19': 'S',
+            '20': 'T',
+            '21': 'U',
+            '22': 'V',
+            '23': 'W',
+            '24': 'X',
+            '25': 'Y',
+            '26': 'Z',
+            '27': ' '}
+
+decode = lambda code: ''.join(x_decode[i] for i in code.split('.')).capitalize()
+x_encode = inv_map = {v: k for k, v in x_decode.items()}
+encode = lambda code: '.'.join([x_encode[i] for i in list(code.upper())])
+
+
+""" -------------------------------------------------------------------------------------------------------------------
+
+#~
+
+Encode and Decode"""

@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MAIN.py" beforeDir="false" afterPath="$PROJECT_DIR$/MAIN.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MAJOR_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/MAJOR_tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minor_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/minor_tests.py" afterDir="false" />
     </list>
     <list id="af8670ce-0428-45a1-819a-a2508a2206a9" name="321312" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +44,7 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
-  <component name="RunManager" selected="Python.MAJOR_tests">
+  <component name="RunManager" selected="Python.minor_tests (1)">
     <configuration name="MAIN (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Exercises" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -174,8 +173,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.MAJOR_tests" />
         <item itemvalue="Python.minor_tests (1)" />
+        <item itemvalue="Python.MAJOR_tests" />
         <item itemvalue="Python.MAIN (1)" />
         <item itemvalue="Python.minor_tests" />
         <item itemvalue="Python.MAIN" />
@@ -227,7 +226,21 @@
       <option name="project" value="LOCAL" />
       <updated>1626118492223</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="123">
+      <created>1626126143628</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1626126143628</updated>
+    </task>
+    <task id="LOCAL-00007" summary="123">
+      <created>1626126156630</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1626126156630</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
