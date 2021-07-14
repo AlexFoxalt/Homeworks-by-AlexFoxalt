@@ -29,16 +29,15 @@ def int_made(x):
 
 def early_game():
     """Start of the game, Y = begin the game, N = end the game"""
-    while True:
-        ans = input("Start the game? (Y/N): ").upper()
-        if ans == 'N':
-            print("You left without starting...")
-            sys.exit()
-        elif ans == 'Y':
-            print(">>> Let's get ready to rumble <<<")
-            break
-        else:
-            print("!Error! Incorrect data.")
+    ans = input("Start the game? (Y/N): ").upper()
+    if ans == 'N':
+        print("You left without starting...")
+        sys.exit()
+    elif ans == 'Y':
+        print(">>> Let's get ready to rumble <<<")
+        pass
+    else:
+        print("!Error! Incorrect data.")
 
 
 def mid_game():
@@ -82,110 +81,107 @@ def advanced_mid_game():
 
 def end_game():
     """End function, collecting data from gamer, and return a result"""
-    while True:
-        answer = input("Try to guess it: ")
-        answer = int_made(answer)
-        if not answer:
-            print("!Error! Incorrect data.")
+    answer = input("Try to guess it: ")
+    answer = int_made(answer)
+    if not answer:
+        print("!Error! Incorrect data.")
+        end_game()
+    print(f"Your number is '{answer}'")
+    if answer == SECRET_NUMBER[0]:
+        restart_answer = input(
+            f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
+            f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
+            f"random number?(Y/else=exit): ")
+        if restart_answer.upper() == "Y":
+            mid_game()
+        else:
+            print("Good bye, my little magician!......or cheater, who knows......")
+            sys.exit()
+    elif answer != SECRET_NUMBER[0]:
+        restart_answer = input(
+            "I'm sorry, but not this time... Do you want to have one more chance?(Y/else=exit): ")
+        if restart_answer.upper() == 'Y':
             end_game()
-        print(f"Your number is '{answer}'")
-        if answer == SECRET_NUMBER[0]:
-            restart_answer = input(
-                f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
-                f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
-                f"random number?(Y/else=exit): ")
-            if restart_answer.upper() == "Y":
-                mid_game()
-            else:
-                print("Good bye, my little magician!......or cheater, who knows......")
-                sys.exit()
-        elif answer != SECRET_NUMBER[0]:
-            restart_answer = input(
-                "I'm sorry, but not this time... Do you want to have one more chance?(Y/else=exit): ")
-            if restart_answer.upper() == 'Y':
-                end_game()
-            else:
-                print("Did you give up so easily? Ok. Maybe next time.")
-                sys.exit()
+        else:
+            print("Did you give up so easily? Ok. Maybe next time.")
+            sys.exit()
 
 
 def advanced_end_game():
     """Advanced end function, attempts are limited, you CAN'T restart a game with new random number."""
-    while True:
-        answer = input("Try to guess it: ")
-        answer = int_made(answer)
-        if not answer:
-            print("!Error! Incorrect data.")
+    answer = input("Try to guess it: ")
+    answer = int_made(answer)
+    if not answer:
+        print("!Error! Incorrect data.")
+        advanced_end_game()
+    print(f"Your number is '{answer}'")
+    if answer == SECRET_NUMBER[0]:
+        restart_answer = input(
+            f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
+            f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
+            f"random number?(Y/else=exit): ")
+        if restart_answer.upper() == "Y":
+            advanced_mid_game()
+        else:
+            print("Good bye, my little magician!......or cheater, who knows......")
+            sys.exit()
+    elif answer != SECRET_NUMBER[0]:
+        NUMBER_OF_ATTEMPTS[0] -= 1
+        if NUMBER_OF_ATTEMPTS[0] == 0:
+            print(f"You lost! You have no more extra chances! My number was: {SECRET_NUMBER[0]}!")
+            sys.exit()
+        restart_answer = input(f"Attempts left: {NUMBER_OF_ATTEMPTS[0]}! I'm sorry, but not this time... Do you "
+                               f"want to have one more chance?(Y/else=exit): ")
+        if restart_answer.upper() == 'Y':
             advanced_end_game()
-        print(f"Your number is '{answer}'")
-        if answer == SECRET_NUMBER[0]:
-            restart_answer = input(
-                f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
-                f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
-                f"random number?(Y/else=exit): ")
-            if restart_answer.upper() == "Y":
-                advanced_mid_game()
-            else:
-                print("Good bye, my little magician!......or cheater, who knows......")
-                sys.exit()
-        elif answer != SECRET_NUMBER[0]:
-            NUMBER_OF_ATTEMPTS[0] -= 1
-            if NUMBER_OF_ATTEMPTS[0] == 0:
-                print(f"You lost! You have no more extra chances! My number was: {SECRET_NUMBER[0]}!")
-                sys.exit()
-            restart_answer = input(f"Attempts left: {NUMBER_OF_ATTEMPTS[0]}! I'm sorry, but not this time... Do you "
-                                   f"want to have one more chance?(Y/else=exit): ")
-            if restart_answer.upper() == 'Y':
-                advanced_end_game()
-            else:
-                print("Did you give up so easily? Ok. Maybe next time.")
-                sys.exit()
+        else:
+            print("Did you give up so easily? Ok. Maybe next time.")
+            sys.exit()
 
 
 def advanced_end_game_with_help():
     """Advanced end function, attempts are limited, help tips added, you can restart a game with new random number."""
-    while True:
-        answer = input("Try to guess it: ")
-        answer = int_made(answer)
-        if not answer:
-            print("!Error! Incorrect data.")
-            advanced_end_game()
-        print(f"Your number is '{answer}'")
-        if answer == SECRET_NUMBER[0]:
-            restart_answer = input(
-                f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
-                f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
-                f"random number?(Y/else=exit): ")
-            if restart_answer.upper() == "Y":
+    answer = input("Try to guess it: ")
+    answer = int_made(answer)
+    if not answer:
+        print("!Error! Incorrect data.")
+        advanced_end_game()
+    print(f"Your number is '{answer}'")
+    if answer == SECRET_NUMBER[0]:
+        restart_answer = input(
+            f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
+            f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
+            f"random number?(Y/else=exit): ")
+        if restart_answer.upper() == "Y":
+            advanced_mid_game()
+        else:
+            print("Good bye, my little magician!......or cheater, who knows......")
+            sys.exit()
+    elif answer != SECRET_NUMBER[0]:
+        NUMBER_OF_ATTEMPTS[0] -= 1
+        if NUMBER_OF_ATTEMPTS[0] == 0:
+            print(f"You lost! Good luck next time! My number was: {SECRET_NUMBER[0]}!")
+            restart_answer = input("Let's do it one more time with another random number?(Y/else=exit): ")
+            if restart_answer.upper() == 'Y':
                 advanced_mid_game()
             else:
-                print("Good bye, my little magician!......or cheater, who knows......")
+                print("Today i defeated you!")
                 sys.exit()
-        elif answer != SECRET_NUMBER[0]:
-            NUMBER_OF_ATTEMPTS[0] -= 1
-            if NUMBER_OF_ATTEMPTS[0] == 0:
-                print(f"You lost! Good luck next time! My number was: {SECRET_NUMBER[0]}!")
-                restart_answer = input("Let's do it one more time with another random number?(Y/else=exit): ")
-                if restart_answer.upper() == 'Y':
-                    advanced_mid_game()
-                else:
-                    print("Today i defeated you!")
-                    sys.exit()
-            help_tip_range = int(answer - SECRET_NUMBER[0])
-            if help_tip_range in range(-4, 5):
-                help_tip = "!HOT!(1:4)"
-            elif help_tip_range in range(-5, 11):
-                help_tip = "...Warm...(5:10)"
-            else:
-                help_tip = ".cold.(10+)"
-            restart_answer = input(f"Attempts left: {NUMBER_OF_ATTEMPTS[0]}! I'm sorry, but not this time... Okay, "
-                                   f"i'll help you...this time...you was: {help_tip}\nDo you want to have one more "
-                                   f"chance?(Y/else=exit): ")
-            if restart_answer.upper() == 'Y':
-                advanced_end_game_with_help()
-            else:
-                print("Did you give up so easily? Ok. Maybe next time.")
-                sys.exit()
+        help_tip_range = int(answer - SECRET_NUMBER[0])
+        if help_tip_range in range(-4, 5):
+            help_tip = "!HOT!(1:4)"
+        elif help_tip_range in range(-5, 11):
+            help_tip = "...Warm...(5:10)"
+        else:
+            help_tip = ".cold.(10+)"
+        restart_answer = input(f"Attempts left: {NUMBER_OF_ATTEMPTS[0]}! I'm sorry, but not this time... Okay, "
+                               f"i'll help you...this time...you was: {help_tip}\nDo you want to have one more "
+                               f"chance?(Y/else=exit): ")
+        if restart_answer.upper() == 'Y':
+            advanced_end_game_with_help()
+        else:
+            print("Did you give up so easily? Ok. Maybe next time.")
+            sys.exit()
 
 
 """"-----------------------------------------------------------------------------------------------------------------"""
