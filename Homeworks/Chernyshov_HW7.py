@@ -167,7 +167,7 @@ def advanced_end_game_with_help():
     if not answer:
         print("\033[1;30;41mIncorrect data.\033[1;m")
         advanced_end_game()
-    print(f"Your number is '{answer}'")
+    print(f"Your number is \033[1;1;32m{answer}\033[1;m")
     if answer == SECRET_NUMBER[0]:
         restart_answer = input(
             f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
@@ -187,7 +187,7 @@ def advanced_end_game_with_help():
             if restart_answer.upper() == 'Y':
                 advanced_mid_game()
             else:
-                print("Today i defeated you!")
+                print("Today i defeated you! My number was: \033[1;1;35m{SECRET_NUMBER[0]}\033[1;m!")
                 EXIT_CODE[0] = 0
                 start()
         help_tip_range = int(answer - SECRET_NUMBER[0])
@@ -237,3 +237,4 @@ def start():
             start()
 
 # start()                                                            # If you want to start the game- activate this line
+start()
