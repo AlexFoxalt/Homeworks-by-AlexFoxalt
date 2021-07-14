@@ -14,17 +14,12 @@ import random
 import sys
 
 
-def random_number(x: int, y: int) -> int:
-    """Randomizer of number"""
-    return random.randint(x, y)
-
-
 def int_made(x):
-    """Function to make input data to int type"""
+    """In our game we need items only with int type, so this function will replace all input data from str > int"""
     try:
         x = int(x)
     except ValueError:
-        x = False
+        x = 0
     return x
 
 
@@ -48,34 +43,33 @@ NUMBER_OF_ATTEMPTS = [0]
 
 def mid_game():
     """This function help to restart the game with new secret number"""
-    SECRET_NUMBER[0] = random_number(1, 100)
+    SECRET_NUMBER[0] = random.randint(1, 100)
     # print('SECRET>>>', SECRET_NUMBER[0], '<<<SECRET')                      # If you want to cheat, activate this line
     print("I just chose a random number for you from 1 to 100.")
 
 
 def advanced_mid_game():
+    bot_and_top_range = [0, 0]
     number_of_attempts_desired = input("1. Enter the number of attempts that you wish (1:∞): ")
     number_of_attempts_desired = int_made(number_of_attempts_desired)
     if not number_of_attempts_desired:
-        print("Incorrect data.")
+        print("Incorrect data. (number of attempts)")
         advanced_mid_game()
     elif number_of_attempts_desired == 1:
-        print("Hm... you're a cocky dude. You have only 1 attempt!")
+        print("Hm... you're a cocky dude. You'll have only 1 attempt!")
     else:
         print(f"You'll have {number_of_attempts_desired} attempts.")
-    bottom_range = input("2. Enter the |bottom| of random number range (1:∞): ")
-    bottom_range = int_made(bottom_range)
-    if not bottom_range:
-        print("Incorrect data.")
+    bot_and_top_range[0] = input("2. Enter the |bottom| of random number range (1:∞): ")
+    bot_and_top_range[1] = input("3. Enter the |top| of random number range (*greater then previous number*): ")
+    bot_and_top_range[0] = int_made(bot_and_top_range[0])
+    bot_and_top_range[1] = int_made(bot_and_top_range[1])
+    if not bot_and_top_range[0] or not bot_and_top_range[1] or bot_and_top_range[0] >= bot_and_top_range[1]:
+        print("Incorrect data. (top or bottom range or both)")
         advanced_mid_game()
-    top_range = input("3. Enter the |top| of random number range (*greater then previous number*): ")
-    top_range = int_made(top_range)
-    if top_range is False or bottom_range > top_range:
-        print("Incorrect data.")
-        advanced_mid_game()
-    SECRET_NUMBER[0] = random_number(bottom_range, top_range)
+    else:
+        SECRET_NUMBER[0] = random.randint(bot_and_top_range[0], bot_and_top_range[1])
+        print(f"I just chose a random number for you from {bot_and_top_range[0]} to {bot_and_top_range[1]}.")
     # print('SECRET>>>', SECRET_NUMBER[0], '<<<SECRET')                      # If you want to cheat, activate this line
-    print(f"I just chose a random number for you from {bottom_range} to {top_range}.")
     NUMBER_OF_ATTEMPTS[0] = number_of_attempts_desired
 
 
@@ -99,7 +93,8 @@ def end_game():
                 print("Good bye, my little magician!......or cheater, who knows......")
                 sys.exit()
         elif answer != SECRET_NUMBER[0]:
-            restart_answer = input("I'm sorry, but not this time... Do you want to have one more chance?(Y/else=exit): ")
+            restart_answer = input(
+                "I'm sorry, but not this time... Do you want to have one more chance?(Y/else=exit): ")
             if restart_answer.upper() == 'Y':
                 end_game()
             else:
@@ -220,7 +215,7 @@ def game_diff_hard():
 
 def start():
     """Game launcher"""
-    res = input("Hello! It my name is Bill Cipher and it's my game! First of all choose the difficult (easy, mid, "
+    res = input("Hello! My name is Bill Cipher and it's my game! First of all choose the difficult (easy, mid, "
                 "hard): ").lower()
     if res == 'easy':
         return game_diff_easy()
@@ -233,7 +228,6 @@ def start():
         start()
 
 
-# start()                                                           # If you want to start the game- activate this line
-
+start()  # If you want to start the game- activate this line
 
 """ Не знаю, может наделал много лишних опций, но решил, что если это игра, она должна быть интересная и не сухая. """
