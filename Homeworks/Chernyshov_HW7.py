@@ -1,5 +1,4 @@
 """Алексей Чернышов HW7
-
 Пишем игру. Программа выбирает из диапазона чисел (пусть для начала будет 1-100) случайное число и предлагает
 пользователю его угадать. Пользователь вводит число. Если пользователь не угадал - предлагает пользователю угадать
 еще раз, пока он не угадает. Если угадал - спрашивает хочет ли он повторить игру (Y/N). Если Y - повторить. N -
@@ -84,6 +83,10 @@ def advanced_mid_game():
     # print('SECRET>>>', SECRET_NUMBER[0], '<<<SECRET')                      # If you want to cheat, activate this line
     NUMBER_OF_ATTEMPTS[0] = number_of_attempts_desired
     if CHOSEN_DIFFICULTY[0] == 'Middle':
+        print("===MIDDLE DIFFICULT FEATURE===\nAfter every failed attempt, i'll help you a bit. If your guessed number "
+              "will be in range:\na. *your number's range* 10+ symbols --------------------> \033[1;1;29m.cold.\033[1;m"
+              "\nb. *your number's range* = from 5 to 10 symbols ---------> \033[1;1;33m...Warm...\033[1;m\nc. *your "
+              "number's range* = from 4 to 1 ------------------> \033[1;1;31m!HOT!\033[1;m")
         advanced_end_game_with_help()
     elif CHOSEN_DIFFICULTY[0] == 'Hard':
         advanced_end_game()
@@ -162,21 +165,12 @@ def advanced_end_game():
 
 
 def advanced_end_game_with_help():
-    """Helps not to see this text, if gamer retry to guess the number"""
-    print("===MIDDLE DIFFICULT FEATURE===\nAfter every failed attempt, i'll help you a bit. If your guessed number "
-          "will be in range:\na. *your number's range* 10+ symbols --------------------> \033[1;1;29m.cold.\033[1;m"
-          "\nb. *your number's range* = from 5 to 10 symbols ---------> \033[1;1;33m...Warm...\033[1;m\nc. *your "
-          "number's range* = from 4 to 1 ------------------> \033[1;1;31m!HOT!\033[1;m")
-    advanced_end_game_with_help_lvl2()
-
-
-def advanced_end_game_with_help_lvl2():
     """Advanced end function, attempts are limited, help tips added, you can restart a game with new random number."""
     answer = input("Try to guess it: ")
     answer = int_made(answer)
     if not answer:
         print("\033[1;30;41mIncorrect data.\033[1;m")
-        advanced_end_game_with_help_lvl2()
+        advanced_end_game_with_help()
     else:
         print(f"Your number is \033[1;1;32m{answer}\033[1;m")
         if answer == SECRET_NUMBER[0]:
@@ -214,7 +208,7 @@ def advanced_end_game_with_help_lvl2():
                     f"this time... Okay, i'll help you...this time...you was: {help_tip}\nDo you want to "
                     f"have one more chance?(Y/else=exit): ")
                 if restart_answer.upper() == 'Y':
-                    advanced_end_game_with_help_lvl2()
+                    advanced_end_game_with_help()
                 else:
                     print(f"Did you give up so easily? Ok. Maybe next time."
                           f"My number was: \033[1;1;35m{SECRET_NUMBER[0]}\033[1;m!")
