@@ -11,7 +11,6 @@
 10 и "Горячо" если от 4 до 1. """
 
 import random
-import sys
 
 SECRET_NUMBER = [0]
 NUMBER_OF_ATTEMPTS = [0]
@@ -97,28 +96,29 @@ def end_game():
     if not answer:
         print("\033[1;30;41mIncorrect data.\033[1;m")
         end_game()
-    print(f"Your number is \033[1;1;32m{answer}\033[1;m")
-    if answer == SECRET_NUMBER[0]:
-        restart_answer = input(
-            f"And my number is\n. . . .\n. . . .\n. . . .\n!\033[1;30;46m{SECRET_NUMBER[0]}\033[1;m! \nWOOOOW!!!GREAT "
-            f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
-            f"random number?(Y/else=exit): ")
-        if restart_answer.upper() == "Y":
-            mid_game()
-        else:
-            print("Good bye, my little magician!......or cheater, who knows......")
-            EXIT_CODE[0] = 0
-            start()
-    elif answer != SECRET_NUMBER[0]:
-        restart_answer = input(
-            "I'm sorry, but not this time... Do you want to have one more chance?(Y/else=exit): ")
-        if restart_answer.upper() == 'Y':
-            end_game()
-        else:
-            print(f"Did you give up so easily? Ok. Maybe next time. "
-                  f"My number was: \033[1;1;35m{SECRET_NUMBER[0]}\033[1;m!")
-            EXIT_CODE[0] = 0
-            start()
+    else:
+        print(f"Your number is \033[1;1;32m{answer}\033[1;m")
+        if answer == SECRET_NUMBER[0]:
+            restart_answer_win = input(
+                f"And my number is\n. . . .\n. . . .\n. . . .\n!\033[1;30;46m{SECRET_NUMBER[0]}\033[1;m! \nWOOOOW!!!GREAT "
+                f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
+                f"random number?(Y/else=exit): ")
+            if restart_answer_win.upper() == "Y":
+                mid_game()
+            else:
+                print("Good bye, my little magician!......or cheater, who knows......")
+                EXIT_CODE[0] = 0
+                start()
+        elif answer != SECRET_NUMBER[0]:
+            restart_answer_lose = input(
+                "I'm sorry, but not this time... Do you want to have one more chance?(Y/else=exit): ")
+            if restart_answer_lose.upper() == 'Y':
+                end_game()
+            else:
+                print(f"Did you give up so easily? Ok. Maybe next time. "
+                      f"My number was: \033[1;1;35m{SECRET_NUMBER[0]}\033[1;m!")
+                EXIT_CODE[0] = 0
+                start()
 
 
 def advanced_end_game():
@@ -128,32 +128,35 @@ def advanced_end_game():
     if not answer:
         print("\033[1;30;41mIncorrect data.\033[1;m")
         advanced_end_game()
-    print(f"Your number is \033[1;1;32m{answer}\033[1;m")
-    if answer == SECRET_NUMBER[0]:
-        restart_answer = input(
-            f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
-            f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
-            f"random number?(Y/else=exit): ")
-        if restart_answer.upper() == "Y":
-            advanced_mid_game()
-        else:
-            print("Good bye, my little magician!......or cheater, who knows......")
-            EXIT_CODE[0] = 0
-            start()
-    elif answer != SECRET_NUMBER[0]:
-        NUMBER_OF_ATTEMPTS[0] -= 1
-        if NUMBER_OF_ATTEMPTS[0] <= 0:
-            print(f"You lost! You have no more extra chances! My number was: \033[1;1;35m{SECRET_NUMBER[0]}\033[1;m!")
-            EXIT_CODE[0] = 0
-            start()
-        else:
-            restart_answer = input(f"Attempts left: \033[4;1;31m{NUMBER_OF_ATTEMPTS[0]}\033[1;m'! I'm sorry, but not "
-                                   f"this time... Do you want to have one more chance?(Y/else=exit): ")
-            if restart_answer.upper() == 'Y':
-                advanced_end_game()
+    else:
+        print(f"Your number is \033[1;1;32m{answer}\033[1;m")
+        if answer == SECRET_NUMBER[0]:
+            restart_answer = input(
+                f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
+                f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
+                f"random number?(Y/else=exit): ")
+            if restart_answer.upper() == "Y":
+                advanced_mid_game()
             else:
-                print(f"Did you give up so easily? Ok. Maybe next time."
-                      f"My number was: \033[1;1;35m{SECRET_NUMBER[0]}\033[1;m!")
+                print("Good bye, my little magician!......or cheater, who knows......")
+                EXIT_CODE[0] = 0
+                start()
+        elif answer != SECRET_NUMBER[0]:
+            NUMBER_OF_ATTEMPTS[0] -= 1
+            if NUMBER_OF_ATTEMPTS[0] <= 0:
+                print(
+                    f"You lost! You have no more extra chances! My number was: \033[1;1;35m{SECRET_NUMBER[0]}\033[1;m!")
+                EXIT_CODE[0] = 0
+                start()
+            else:
+                restart_answer = input(
+                    f"Attempts left: \033[4;1;31m{NUMBER_OF_ATTEMPTS[0]}\033[1;m'! I'm sorry, but not "
+                    f"this time... Do you want to have one more chance?(Y/else=exit): ")
+                if restart_answer.upper() == 'Y':
+                    advanced_end_game()
+                else:
+                    print(f"Did you give up so easily? Ok. Maybe next time."
+                          f"My number was: \033[1;1;35m{SECRET_NUMBER[0]}\033[1;m!")
                 EXIT_CODE[0] = 0
                 start()
 
@@ -174,47 +177,49 @@ def advanced_end_game_with_help_lvl2():
     if not answer:
         print("\033[1;30;41mIncorrect data.\033[1;m")
         advanced_end_game_with_help_lvl2()
-    print(f"Your number is \033[1;1;32m{answer}\033[1;m")
-    if answer == SECRET_NUMBER[0]:
-        restart_answer = input(
-            f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
-            f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
-            f"random number?(Y/else=exit): ")
-        if restart_answer.upper() == "Y":
-            advanced_mid_game()
-        else:
-            print("Good bye, my little magician!......or cheater, who knows......")
-            EXIT_CODE[0] = 0
-            start()
-    elif answer != SECRET_NUMBER[0]:
-        NUMBER_OF_ATTEMPTS[0] -= 1
-        if NUMBER_OF_ATTEMPTS[0] <= 0:
-            print(f"You lost! Good luck next time! My number was: \033[1;1;35m{SECRET_NUMBER[0]}\033[1;m!")
-            restart_answer = input("Let's do it one more time with another random number?(Y/else=exit): ")
-            if restart_answer.upper() == 'Y':
+    else:
+        print(f"Your number is \033[1;1;32m{answer}\033[1;m")
+        if answer == SECRET_NUMBER[0]:
+            restart_answer = input(
+                f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
+                f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
+                f"random number?(Y/else=exit): ")
+            if restart_answer.upper() == "Y":
                 advanced_mid_game()
             else:
-                print(f"Today i defeated you!")
+                print("Good bye, my little magician!......or cheater, who knows......")
                 EXIT_CODE[0] = 0
                 start()
-        else:
-            help_tip_range = int(answer - SECRET_NUMBER[0])
-            if help_tip_range in range(-4, 5):
-                help_tip = "\033[1;1;31m!HOT!\033[1;m (1:4)"
-            elif help_tip_range in range(-5, 11):
-                help_tip = "\033[1;1;33m...Warm...\033[1;m (5:10)"
+        elif answer != SECRET_NUMBER[0]:
+            NUMBER_OF_ATTEMPTS[0] -= 1
+            if NUMBER_OF_ATTEMPTS[0] <= 0:
+                print(f"You lost! Good luck next time! My number was: \033[1;1;35m{SECRET_NUMBER[0]}\033[1;m!")
+                restart_answer = input("Let's do it one more time with another random number?(Y/else=exit): ")
+                if restart_answer.upper() == 'Y':
+                    advanced_mid_game()
+                else:
+                    print(f"Today i defeated you!")
+                    EXIT_CODE[0] = 0
+                    start()
             else:
-                help_tip = "\033[1;1;29m.cold.\033[1;m (10+)"
-            restart_answer = input(f"Attempts left: '\033[4;1;31m{NUMBER_OF_ATTEMPTS[0]}\033[1;m'! I'm sorry, but not "
-                                   f"this time... Okay, i'll help you...this time...you was: {help_tip}\nDo you want to "
-                                   f"have one more chance?(Y/else=exit): ")
-            if restart_answer.upper() == 'Y':
-                advanced_end_game_with_help_lvl2()
-            else:
-                print(f"Did you give up so easily? Ok. Maybe next time."
-                      f"My number was: \033[1;1;35m{SECRET_NUMBER[0]}\033[1;m!")
-                EXIT_CODE[0] = 0
-                start()
+                help_tip_range = int(answer - SECRET_NUMBER[0])
+                if help_tip_range in range(-4, 5):
+                    help_tip = "\033[1;1;31m!HOT!\033[1;m (1:4)"
+                elif help_tip_range in range(-5, 11):
+                    help_tip = "\033[1;1;33m...Warm...\033[1;m (5:10)"
+                else:
+                    help_tip = "\033[1;1;29m.cold.\033[1;m (10+)"
+                restart_answer = input(
+                    f"Attempts left: '\033[4;1;31m{NUMBER_OF_ATTEMPTS[0]}\033[1;m'! I'm sorry, but not "
+                    f"this time... Okay, i'll help you...this time...you was: {help_tip}\nDo you want to "
+                    f"have one more chance?(Y/else=exit): ")
+                if restart_answer.upper() == 'Y':
+                    advanced_end_game_with_help_lvl2()
+                else:
+                    print(f"Did you give up so easily? Ok. Maybe next time."
+                          f"My number was: \033[1;1;35m{SECRET_NUMBER[0]}\033[1;m!")
+                    EXIT_CODE[0] = 0
+                    start()
 
 
 """------------------------------------------------------------------------------------------------------------------"""
@@ -246,3 +251,4 @@ def start():
 
 
 # start()                                                            # If you want to start the game- activate this line
+start()
