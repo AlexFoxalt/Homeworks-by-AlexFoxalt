@@ -228,6 +228,4 @@ def start():
         start()
 
 
-start()  # If you want to start the game- activate this line
-
-""" Не знаю, может наделал много лишних опций, но решил, что если это игра, она должна быть интересная и не сухая. """
+# start()                                                           # If you want to start the game- activate this line
