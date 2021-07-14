@@ -132,8 +132,8 @@ def advanced_end_game():
         print(f"Your number is \033[1;1;32m{answer}\033[1;m")
         if answer == SECRET_NUMBER[0]:
             restart_answer = input(
-                f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
-                f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
+                f"And my number is\n. . . .\n. . . .\n. . . .\n\033[1;30;46m{SECRET_NUMBER[0]}\033[1;m \nWOOOOW!!!GREAT"
+                f" JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
                 f"random number?(Y/else=exit): ")
             if restart_answer.upper() == "Y":
                 advanced_mid_game()
@@ -181,7 +181,7 @@ def advanced_end_game_with_help_lvl2():
         print(f"Your number is \033[1;1;32m{answer}\033[1;m")
         if answer == SECRET_NUMBER[0]:
             restart_answer = input(
-                f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
+                f"And my number is\n. . . .\n. . . .\n. . . .\n\033[1;30;46m{SECRET_NUMBER[0]}\033[1;m \nWOOOOW!!!GREAT "
                 f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
                 f"random number?(Y/else=exit): ")
             if restart_answer.upper() == "Y":
@@ -251,4 +251,3 @@ def start():
 
 
 # start()                                                            # If you want to start the game- activate this line
-start()
