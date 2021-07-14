@@ -228,17 +228,17 @@ def start():
             CHOSEN_DIFFICULTY[0] = "Easy"
             print("\033[1;1;32mEasy mode:\033[1;m An infinite number of attempts, you can exit at any time, "
                   "you can re-select a random number.")
-            return early_game()
+            early_game()
         elif res == "mid":
             CHOSEN_DIFFICULTY[0] = "Middle"
             print("\033[1;1;33mMiddle mode:\033[1;m You can choose the number of attempts, a range of random numbers, "
                   "after each failure a hint will pop up, the possibility to choose a new random number after defeat.")
-            return early_game()
+            early_game()
         elif res == "hard":
             CHOSEN_DIFFICULTY[0] = "Hard"
             print("\033[1;1;31mHard mode:\033[1;m You can choose the number of attempts, the range of random numbers, "
                   "there are NO hints, there is NO possibility to choose a new random number after defeat.")
-            return early_game()
+            early_game()
         else:
             print("\033[1;30;41mIncorrect data.\033[1;m")
             start()
