@@ -49,6 +49,7 @@ def mid_game():
 
 
 def advanced_mid_game():
+    """Advanced mid_game() function. Now gamer can choose the number of attempts and the range of random numbers"""
     bot_and_top_range = [0, 0]
     number_of_attempts_desired = input("1. Enter the number of attempts that you wish (1:∞): ")
     number_of_attempts_desired = int_made(number_of_attempts_desired)
@@ -227,7 +228,4 @@ def start():
         print('Incorrect data.')
         start()
 
-
-start()  # If you want to start the game- activate this line
-
-""" Не знаю, может наделал много лишних опций, но решил, что если это игра, она должна быть интересная и не сухая. """
+# start()                                                            # If you want to start the game- activate this line
