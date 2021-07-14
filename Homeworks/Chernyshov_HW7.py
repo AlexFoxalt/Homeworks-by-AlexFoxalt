@@ -228,4 +228,4 @@ def start():
         start()
 
 
-start()  # If you want to start the game- activate this line
+# start()  # If you want to start the game- activate this line
