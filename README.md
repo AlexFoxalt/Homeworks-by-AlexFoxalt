@@ -1,3 +1,1 @@
-# Python by Foxes
-Python code string
-		by AlexFoxalt.
+# Python by AlexFoxalt
