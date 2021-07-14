@@ -145,8 +145,8 @@ def advanced_end_game():
         if NUMBER_OF_ATTEMPTS[0] == 0:
             print(f"You lost! You have no more extra chances! My number was: \033[1;1;35m{SECRET_NUMBER[0]}\033[1;m!")
             sys.exit()
-        restart_answer = input(f"Attempts left: {NUMBER_OF_ATTEMPTS[0]}! I'm sorry, but not this time... Do you "
-                               f"want to have one more chance?(Y/else=exit): ")
+        restart_answer = input(f"Attempts left: [4;1;31m{NUMBER_OF_ATTEMPTS[0]}\033[1;m'! I'm sorry, but not this "
+                               f"time... Do you want to have one more chance?(Y/else=exit): ")
         if restart_answer.upper() == 'Y':
             advanced_end_game()
         else:
@@ -157,16 +157,21 @@ def advanced_end_game():
 
 
 def advanced_end_game_with_help():
-    """Advanced end function, attempts are limited, help tips added, you can restart a game with new random number."""
+    """Helps not to see this text, if gamer retry to guess the number"""
     print("===MIDDLE DIFFICULT FEATURE===\nAfter every failed attempt, i'll help you a bit. If your guessed number "
           "will be in range:\na. *your number's range* 10+ symbols --------------------> \033[1;1;29m.cold.\033[1;m"
           "\nb. *your number's range* = from 5 to 10 symbols ---------> \033[1;1;33m...Warm...\033[1;m\nc. *your "
           "number's range* = from 4 to 1 ------------------> \033[1;1;31m!HOT!\033[1;m")
+    advanced_end_game_with_help_lvl2()
+
+
+def advanced_end_game_with_help_lvl2():
+    """Advanced end function, attempts are limited, help tips added, you can restart a game with new random number."""
     answer = input("Try to guess it: ")
     answer = int_made(answer)
     if not answer:
         print("\033[1;30;41mIncorrect data.\033[1;m")
-        advanced_end_game()
+        advanced_end_game_with_help_lvl2()
     print(f"Your number is \033[1;1;32m{answer}\033[1;m")
     if answer == SECRET_NUMBER[0]:
         restart_answer = input(
@@ -187,7 +192,7 @@ def advanced_end_game_with_help():
             if restart_answer.upper() == 'Y':
                 advanced_mid_game()
             else:
-                print("Today i defeated you! My number was: \033[1;1;35m{SECRET_NUMBER[0]}\033[1;m!")
+                print(f"Today i defeated you! My number was: \033[1;1;35m{SECRET_NUMBER[0]}\033[1;m!")
                 EXIT_CODE[0] = 0
                 start()
         help_tip_range = int(answer - SECRET_NUMBER[0])
@@ -197,11 +202,11 @@ def advanced_end_game_with_help():
             help_tip = "\033[1;1;33m...Warm...\033[1;m (5:10)"
         else:
             help_tip = "\033[1;1;29m.cold.\033[1;m (10+)"
-        restart_answer = input(f"Attempts left: {NUMBER_OF_ATTEMPTS[0]}! I'm sorry, but not this time... Okay, "
-                               f"i'll help you...this time...you was: {help_tip}\nDo you want to have one more "
-                               f"chance?(Y/else=exit): ")
+        restart_answer = input(f"Attempts left: '\033[4;1;31m{NUMBER_OF_ATTEMPTS[0]}\033[1;m'! I'm sorry, but not "
+                               f"this time... Okay, i'll help you...this time...you was: {help_tip}\nDo you want to "
+                               f"have one more chance?(Y/else=exit): ")
         if restart_answer.upper() == 'Y':
-            advanced_end_game_with_help()
+            advanced_end_game_with_help_lvl2()
         else:
             print(f"Did you give up so easily? Ok. Maybe next time."
                   f"My number was: \033[1;1;35m{SECRET_NUMBER[0]}\033[1;m!")
@@ -235,6 +240,7 @@ def start():
         else:
             print("\033[1;30;41mIncorrect data.\033[1;m")
             start()
+
 
 # start()                                                            # If you want to start the game- activate this line
 start()
