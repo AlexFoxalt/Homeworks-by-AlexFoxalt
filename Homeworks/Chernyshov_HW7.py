@@ -13,6 +13,10 @@
 import random
 import sys
 
+SECRET_NUMBER = [0]
+NUMBER_OF_ATTEMPTS = [0]
+CHOSEN_DIFFICULTY = [""]
+
 
 def int_made(x):
     """In our game we need items only with int type, so this function will replace all input data from str > int"""
@@ -37,19 +41,17 @@ def early_game():
             print("!Error! Incorrect data.")
 
 
-SECRET_NUMBER = [0]
-NUMBER_OF_ATTEMPTS = [0]
-
-
 def mid_game():
     """This function help to restart the game with new secret number"""
     SECRET_NUMBER[0] = random.randint(1, 100)
     # print('SECRET>>>', SECRET_NUMBER[0], '<<<SECRET')                      # If you want to cheat, activate this line
     print("I just chose a random number for you from 1 to 100.")
+    end_game()
 
 
 def advanced_mid_game():
-    """Advanced mid_game() function. Now gamer can choose the number of attempts and the range of random numbers"""
+    """Advanced mid_game() function. Now gamer can choose the number of attempts and the range of random numbers,
+    if you chose hard mode - the game won't have restart option """
     bot_and_top_range = [0, 0]
     number_of_attempts_desired = input("1. Enter the number of attempts that you wish (1:∞): ")
     number_of_attempts_desired = int_made(number_of_attempts_desired)
@@ -72,10 +74,14 @@ def advanced_mid_game():
         print(f"I just chose a random number for you from {bot_and_top_range[0]} to {bot_and_top_range[1]}.")
     # print('SECRET>>>', SECRET_NUMBER[0], '<<<SECRET')                      # If you want to cheat, activate this line
     NUMBER_OF_ATTEMPTS[0] = number_of_attempts_desired
+    if CHOSEN_DIFFICULTY[0] == 'mid':
+        advanced_end_game_with_help()
+    elif CHOSEN_DIFFICULTY[0] == 'hard':
+        advanced_end_game()
 
 
 def end_game():
-    """Main function, collecting data from gamer, and return a result"""
+    """End function, collecting data from gamer, and return a result"""
     while True:
         answer = input("Try to guess it: ")
         answer = int_made(answer)
@@ -104,7 +110,40 @@ def end_game():
 
 
 def advanced_end_game():
-    """Advanced main function, attempts are limited."""
+    """Advanced end function, attempts are limited, you CAN'T restart a game with new random number."""
+    while True:
+        answer = input("Try to guess it: ")
+        answer = int_made(answer)
+        if not answer:
+            print("!Error! Incorrect data.")
+            advanced_end_game()
+        print(f"Your number is '{answer}'")
+        if answer == SECRET_NUMBER[0]:
+            restart_answer = input(
+                f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
+                f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
+                f"random number?(Y/else=exit): ")
+            if restart_answer.upper() == "Y":
+                advanced_mid_game()
+            else:
+                print("Good bye, my little magician!......or cheater, who knows......")
+                sys.exit()
+        elif answer != SECRET_NUMBER[0]:
+            NUMBER_OF_ATTEMPTS[0] -= 1
+            if NUMBER_OF_ATTEMPTS[0] == 0:
+                print(f"You lost! You have no more extra chances! My number was: {SECRET_NUMBER[0]}!")
+                sys.exit()
+            restart_answer = input(f"Attempts left: {NUMBER_OF_ATTEMPTS[0]}! I'm sorry, but not this time... Do you "
+                                   f"want to have one more chance?(Y/else=exit): ")
+            if restart_answer.upper() == 'Y':
+                advanced_end_game()
+            else:
+                print("Did you give up so easily? Ok. Maybe next time.")
+                sys.exit()
+
+
+def advanced_end_game_with_help():
+    """Advanced end function, attempts are limited, help tips added, you can restart a game with new random number."""
     while True:
         answer = input("Try to guess it: ")
         answer = int_made(answer)
@@ -126,40 +165,12 @@ def advanced_end_game():
             NUMBER_OF_ATTEMPTS[0] -= 1
             if NUMBER_OF_ATTEMPTS[0] == 0:
                 print(f"You lost! Good luck next time! My number was: {SECRET_NUMBER[0]}!")
-                sys.exit()
-            restart_answer = input(f"Attempts left: {NUMBER_OF_ATTEMPTS[0]}! I'm sorry, but not this time... Do you "
-                                   f"want to have one more chance?(Y/else=exit): ")
-            if restart_answer.upper() == 'Y':
-                advanced_end_game()
-            else:
-                print("Did you give up so easily? Ok. Maybe next time.")
-                sys.exit()
-
-
-def advanced_end_game_with_help():
-    """Advanced main function, attempts are limited, help tips added."""
-    while True:
-        answer = input("Try to guess it: ")
-        answer = int_made(answer)
-        if not answer:
-            print("!Error! Incorrect data.")
-            advanced_end_game_with_help()
-        print(f"Your number is '{answer}'")
-        if answer == SECRET_NUMBER[0]:
-            restart_answer = input(
-                f"And my number is\n. . . .\n. . . .\n. . . .\n!{SECRET_NUMBER[0]}! \nWOOOOW!!!GREAT "
-                f"JOB!!! Houdini, is it you? Nevermind... Let's do it one more time with another "
-                f"random number?(Y/else=exit): ")
-            if restart_answer.upper() == "Y":
-                advanced_mid_game()
-            else:
-                print("Good bye, my little magician!......or cheater, who knows......")
-                sys.exit()
-        elif answer != SECRET_NUMBER[0]:
-            NUMBER_OF_ATTEMPTS[0] -= 1
-            if NUMBER_OF_ATTEMPTS[0] == 0:
-                print(f"You lost! Good luck next time! My number was: {SECRET_NUMBER[0]}!")
-                sys.exit()
+                restart_answer = input("Let's do it one more time with another random number?(Y/else=exit): ")
+                if restart_answer.upper() == 'Y':
+                    advanced_mid_game()
+                else:
+                    print("Today i defeated you!")
+                    sys.exit()
             help_tip_range = int(answer - SECRET_NUMBER[0])
             if help_tip_range in range(-4, 5):
                 help_tip = "!HOT!(1:4)"
@@ -185,11 +196,11 @@ def game_diff_easy():
     early_game()
     print('Difficult: Easy')
     mid_game()
-    end_game()
 
 
 def game_diff_middle():
-    """Mid difficult: Attempts are limited, range of random number is chosen, help tips are available."""
+    """Mid difficult: Attempts are limited, range of random number is chosen, help tips are available,
+    you can restart the game if you lost, with new random number """
     early_game()
     print("Difficult: Middle")
     print("Now you have to choose the number of attempts for which you think you will guess the number, \nas well as "
@@ -198,17 +209,16 @@ def game_diff_middle():
           "10+ symbols --------------------> .cold.\nb. *your number's range* = from 5 to 10 symbols ---------> "
           "...Warm...\nc. *your number's range* = from 4 to 1 ------------------> !HOT!")
     advanced_mid_game()
-    advanced_end_game_with_help()
 
 
 def game_diff_hard():
-    """Hard difficult: Attempts are limited, range of random number is chosen, help tips are NOT available."""
+    """Hard difficult: Attempts are limited, range of random number is chosen, help tips are NOT available,
+    you CAN'T restart the game if you lost, with new random number """
     early_game()
     print("Difficult: Hard")
     print("Now you have to choose the number of attempts for which you think you will guess my number, \nas well as "
           "the range of numbers from which I will choose a random one.")
     advanced_mid_game()
-    advanced_end_game()
 
 
 """------------------------------------------------------------------------------------------------------------------"""
@@ -221,11 +231,13 @@ def start():
     if res == 'easy':
         return game_diff_easy()
     elif res == 'mid':
+        CHOSEN_DIFFICULTY[0] = "mid"
         return game_diff_middle()
     elif res == 'hard':
+        CHOSEN_DIFFICULTY[0] = "hard"
         return game_diff_hard()
     else:
         print('Incorrect data.')
-        start()
+
 
 # start()                                                            # If you want to start the game- activate this line
