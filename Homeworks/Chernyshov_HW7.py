@@ -221,7 +221,7 @@ def advanced_end_game_with_help():
 
 def start():
     """Game launcher"""
-    while EXIT_CODE[0] == 1:
+    if EXIT_CODE[0] == 1:
         res = input("Hello! My name is \033[1;1;34mBill\033[1;m \033[1;1;35mCipher\033[2;m and it's my game! First of "
                     "all choose the difficult (easy, mid, hard): ").lower()
         if res == "easy":
@@ -242,6 +242,5 @@ def start():
         else:
             print("\033[1;30;41mIncorrect data.\033[1;m")
             start()
-
 
 # start()                                                            # If you want to start the game- activate this line
