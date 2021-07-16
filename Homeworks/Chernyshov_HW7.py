@@ -9,7 +9,7 @@
 и не угадал - сообщать: "Холодно" если разница между загаданным и введенным числами больше 10, "Тепло" - если от 5 до
 10 и "Горячо" если от 4 до 1. """
 
-import random
+from random import randint
 
 SECRET_NUMBER = [0]
 NUMBER_OF_ATTEMPTS = [0]
@@ -48,7 +48,7 @@ def early_game():
 def mid_game():
     """This function help to restart the game with new secret number"""
     print(f"Difficult: {CHOSEN_DIFFICULTY[0]}")
-    SECRET_NUMBER[0] = random.randint(1, 100)
+    SECRET_NUMBER[0] = randint(1, 100)
     # print('SECRET>>>', SECRET_NUMBER[0], '<<<SECRET')                      # If you want to cheat, activate this line
     print("I just chose a random number for you from 1 to 100.")
     end_game()
@@ -78,7 +78,7 @@ def advanced_mid_game():
         print("\033[1;30;41mIncorrect data.\033[1;m (top or bottom range or both)")
         advanced_mid_game()
     else:
-        SECRET_NUMBER[0] = random.randint(bot_and_top_range[0], bot_and_top_range[1])
+        SECRET_NUMBER[0] = randint(bot_and_top_range[0], bot_and_top_range[1])
         print(f"I just chose a random number for you from {bot_and_top_range[0]} to {bot_and_top_range[1]}.")
     # print('SECRET>>>', SECRET_NUMBER[0], '<<<SECRET')                      # If you want to cheat, activate this line
     NUMBER_OF_ATTEMPTS[0] = number_of_attempts_desired
