@@ -6,15 +6,15 @@ main_file.py) попросить пользователя ввести с кла
 lib.py функцию спросить у пользователя, хочет ли он повторить операцию (Y/N).Повторять пока пользователь отвечает Y и
 прекратить когда пользователь скажет N. """
 
-import lib
-import math
-import random
+from lib import yes_or_no
+from math import sqrt
+from random import randint
 
 
 def repeat_foo(x: str):
     while True:
         restart_or_no = input('Do you want to restart? (yes/no): ')
-        restart_or_no = lib.yes_or_no(restart_or_no)
+        restart_or_no = yes_or_no(restart_or_no)
         if restart_or_no == 'Error':
             print('< < < Error > > >')
         elif not restart_or_no:
@@ -35,7 +35,7 @@ repeat_foo(user_str)
 def do_some_geometry_things(x: int):
     perimeter = x * 4
     area = x * x
-    diagonal = round(math.sqrt(2) * x, 2)
+    diagonal = round(sqrt(2) * x, 2)
     return print(f'Perimeter = {perimeter}, Area = {area}, Diagonal = {diagonal}')
 
 
@@ -57,7 +57,7 @@ while True:
 def russian_roulette():
     while True:
         bang_number = 1
-        res = random.randint(1, 6)
+        res = randint(1, 6)
         if res == bang_number:
             print('***Boom***\nGame over, you are dead.')
             return
