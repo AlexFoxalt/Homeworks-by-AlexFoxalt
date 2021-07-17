@@ -63,10 +63,10 @@ def russian_roulette():
             return
         else:
             print('***Click***\nNot this time!')
-            yes_or_no = input('One more time? (yes/else=exit): ').lower()
-            if yes_or_no != 'yes':
+            yes_or_no_question = input('One more time? (yes/else=exit): ').lower()
+            if yes_or_no_question != 'yes':
                 print('Bye bye!')
-                break
+                return
             else:
                 print("Let's Go!")
 
