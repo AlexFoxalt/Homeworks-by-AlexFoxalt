@@ -1,3 +1,6 @@
+""" Addition to main_file.py """
+
+
 def yes_or_no(x: str):
     if x.lower() == 'yes':
         return True
