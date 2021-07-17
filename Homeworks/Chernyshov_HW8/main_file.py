@@ -59,7 +59,7 @@ def russian_roulette():
         bang_number = 1
         res = random.randint(1, 6)
         if res == bang_number:
-            print('***Boom***\nYou are dead.')
+            print('***Boom***\nGame over, you are dead.')
             return
         else:
             print('***Click***\nNot this time!')
