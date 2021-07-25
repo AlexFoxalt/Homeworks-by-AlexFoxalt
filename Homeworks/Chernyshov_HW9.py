@@ -153,6 +153,8 @@ class Appliances:
 
     def turn(self, on_or_off):
         """This function turning on and off the device"""
+        if not self.name:
+            return print('Something went wrong. Data may be incorrect')
         if on_or_off.lower() == 'on':
             print(f'{self.name} is turned on!')
         elif on_or_off.lower() == 'off':
@@ -309,3 +311,4 @@ microwave_samsung = Microwave('Microwave \'Samsung\'', 50, 5, 800, 5)
 microwave_lg = Microwave('Microwave \'LG\'', 65, 7, 1000, 10)
 cooker_tefal = Cooker('Cooker \'Tefal\'', 110, 15, 20)
 interceptor_3000 = Heating_device([1.2, 1.3, '111'], False, "Zz123Zz", {None: 'dict'})
+interceptor_3000.turn('on')
