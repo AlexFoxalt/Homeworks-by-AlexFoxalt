@@ -126,7 +126,7 @@ natures_mistake = Animals(123, False, ['1', {None: None}, 99.99])
 """Задание №2
 Почитайте про Диаграммы класса. Опишите с помощью классов кухонную технику в виде диаграммы. Продумайте классы, 
 их назначение и взаимосвязи. Реализовать с описанием свойств и методов."""
-
+# Plan is here>>>   https://ibb.co/pdKPhWh
 """Задание №3
 Описать все то же с помощью питона."""
 
@@ -159,6 +159,8 @@ class Appliances:
             print('Incorrect data')
 
     def can_i_lift_it(self, your_maximum: int):
+        if not self.weight:
+            return print('Something went wrong. Data may be incorrect')
         if your_maximum > self.weight:
             print('You can do it!')
         elif your_maximum == self.weight:
@@ -167,6 +169,8 @@ class Appliances:
             print(f'The {self.name} is too heavy! The weight of one is {self.weight}kg !!')
 
     def i_have_no_dollars(self):
+        if not self.price:
+            return print('Something went wrong. Data may be incorrect')
         users_currency = input('Enter your currency (eur/uah/rub): ').upper()
         if users_currency == 'EUR':
             return print(f'Price of {self.name} is', str(round(self.price / 1.18, 2)) + ' EUR')
