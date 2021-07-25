@@ -132,7 +132,7 @@ natures_mistake = Animals(123, False, ['1', {None: None}, 99.99])
 
 
 class Appliances:
-    """Technology parameters"""
+    """Technology parameters, base class"""
     name = None
     price = None
     weight = None
@@ -150,7 +150,7 @@ class Appliances:
         self.weight = weight
 
     def turn(self, on_or_off):
-
+        """This function turning on and off the device"""
         if on_or_off.lower() == 'on':
             print(f'{self.name} is turned on!')
         elif on_or_off.lower() == 'off':
@@ -159,6 +159,7 @@ class Appliances:
             print('Incorrect data')
 
     def can_i_lift_it(self, your_maximum: int):
+        """If user want to transport an item, this function will say, if it possible or not"""
         if not self.weight:
             return print('Something went wrong. Data may be incorrect')
         if your_maximum > self.weight:
@@ -169,6 +170,7 @@ class Appliances:
             print(f'The {self.name} is too heavy! The weight of one is {self.weight}kg !!')
 
     def i_have_no_dollars(self):
+        """If user has no $ this function will convert the price in any currency"""
         if not self.price:
             return print('Something went wrong. Data may be incorrect')
         users_currency = input('Enter your currency (eur/uah/rub): ').upper()
@@ -182,6 +184,7 @@ class Appliances:
             print('Sorry, but we don\'t accept this currency.')
 
     def define_it(self):
+        """This function will describe the whole class"""
         print('Kitchen appliances exist to make life easier and automate processes in your house.')
 
 
@@ -197,6 +200,7 @@ dict_of_masses = {'apple': 126,
 
 
 class Heating_device(Appliances):
+    """Heating devices have new parameter as power, that will be used in calculating speed of work of device"""
     power = None
 
     def __init__(self, name: str, price: int, weight: int, power: int):
@@ -208,6 +212,7 @@ class Heating_device(Appliances):
         super().__init__(name, price, weight)
 
     def how_fast_it_will_be(self):
+        """Calculating the speed of working on some types of kitchen stuff."""
         if not self.power:
             return print('Something went wrong. Data may be incorrect')
         heating_item = input(f'Which item you want to heat in: {self.name}? (power = {self.power}W)'
@@ -278,6 +283,7 @@ class Microwave(Heating_device):
         super().__init__(name, price, weight, power)
 
     def show_me_size(self):
+        """"This function will return the capacity of device"""
         if not self.size:
             return print('Something went wrong. Data may be incorrect')
         return print(f'Size of {self.name} is {self.size}l.')
