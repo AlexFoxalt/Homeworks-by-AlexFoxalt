@@ -124,7 +124,7 @@ def timer_2(some_function):
 @timer_2
 def fibo_f_2():
     res = [1, 1]
-    for x in range(2, 200000):
+    for x in range(2, 200000):  # будет ~4сек.
         res.append(res[x - 2] + res[x - 1])
     return 'Some type of result'
 
