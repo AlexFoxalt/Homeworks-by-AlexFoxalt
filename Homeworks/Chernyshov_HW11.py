@@ -112,7 +112,7 @@ def timer_2(some_function):
         end = datetime.now()
         time = str(end - start).split(':')
         time[2] = time[2].split('.')
-        time = time[0] + 'H' + ' - ' + time[1] + 'M' + ' - ' + time[2][0] + 'S' + ' - ' + time[2][0][0:2] + 'mS'
+        time = time[0] + 'H' + ' - ' + time[1] + 'M' + ' - ' + time[2][0] + 'S' + ' - ' + time[2][1][0:2] + 'mS'
         res = {'result': function_data,
                'time': time}
         print(res)
