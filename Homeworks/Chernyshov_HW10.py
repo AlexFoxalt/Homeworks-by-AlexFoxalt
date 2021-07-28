@@ -1,4 +1,4 @@
-"""Чернышов Алексей HW9"""
+"""Чернышов Алексей HW10"""
 
 from datetime import datetime
 import webbrowser
