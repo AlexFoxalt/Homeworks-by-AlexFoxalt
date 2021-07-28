@@ -86,12 +86,12 @@ def timer(some_function):
 def fibo_f():
     res = [1, 1]
     for x in range(2, 10000):
-        res.append(res[x - 2] + res[x - 1])
+        res.append(res[x - 2] + res[x - 1])  # ~ <1s.
 
 
 @timer
 def sumo_f():
-    num_list = [x for x in range(1000000) if x % 2 == 0]
+    num_list = [x for x in range(1000000) if x % 2 == 0]  # ~ <1s.
 
 
 fibo_f()
@@ -124,7 +124,7 @@ def timer_2(some_function):
 @timer_2
 def fibo_f_2():
     res = [1, 1]
-    for x in range(2, 200000):  # будет ~4сек.
+    for x in range(2, 200000):  # ~4с.
         res.append(res[x - 2] + res[x - 1])
     return 'Some type of result'
 
