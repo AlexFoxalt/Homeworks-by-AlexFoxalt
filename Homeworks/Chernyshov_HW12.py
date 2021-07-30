@@ -44,17 +44,17 @@ class Triangle:
         return
 
     def __iter__(self):
-        self._current = 0
+        self._counter = 0
         return self
 
     def __next__(self):
         list_of_points = [('a', self.a.x_coord, self.a.y_coord),
                           ('b', self.b.x_coord, self.b.y_coord),
                           ('c', self.c.x_coord, self.c.y_coord)]
-        if self._current >= 3:
+        if self._counter >= 3:
             raise StopIteration
-        res = list_of_points[self._current]
-        self._current += 1
+        res = list_of_points[self._counter]
+        self._counter += 1
         return res
 
 
