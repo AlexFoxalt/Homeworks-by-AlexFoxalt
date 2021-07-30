@@ -37,14 +37,12 @@ class Line:
 
     def __init__(self, p1, p2):
         if isinstance(p1, Point) and isinstance(p2, Point):
-            self.first_point = p1
-            self.second_point = p2
             """Можно так"""
             #########################################################################################
             if [self.first_point.x_coord, self.first_point.y_coord] == [self.second_point.x_coord,
                                                                         self.second_point.y_coord]:
-                first_point = None
-                second_point = None
+                self.first_point = p1
+                self.second_point = p2
                 raise Exception('point1 == point2')
             #########################################################################################
         else:
@@ -75,9 +73,9 @@ line1 = Line(point1, point2)
 def timer(some_function):
     def wrapper(*args, **kwargs):
         start = datetime.now()
-        some_function(*args, **kwargs)
+        res = some_function(*args, **kwargs)
         print(f'{(datetime.now() - start).microseconds} MSs required to perform the {some_function}')
-        return some_function
+        return res
 
     return wrapper
 
