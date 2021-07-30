@@ -39,10 +39,10 @@ class Line:
         if isinstance(p1, Point) and isinstance(p2, Point):
             """Можно так"""
             #########################################################################################
-            if [self.first_point.x_coord, self.first_point.y_coord] == [self.second_point.x_coord,
-                                                                        self.second_point.y_coord]:
+            if [p1.x_coord, p1.y_coord] != [p2.x_coord, p2.y_coord]:
                 self.first_point = p1
                 self.second_point = p2
+            else:
                 raise Exception('point1 == point2')
             #########################################################################################
         else:
