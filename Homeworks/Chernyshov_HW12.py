@@ -58,7 +58,7 @@ class Triangle:
         return res
 
 
-figure1 = Triangle(Point(0, 1), Point(2, 5), Point(0, 5))
+figure1 = Triangle(Point(0, 0), Point(5, 5), Point(0, 5))
 # Проверка 'уродцев'
 # figure2 = Triangle(Point('0', '0'), Point(False, True), Point(0, 0))
 # figure3 = Triangle(Point(0, 0), Point(0, 0), Point(0, 0))
