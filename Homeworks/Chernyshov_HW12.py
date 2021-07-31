@@ -26,6 +26,12 @@ class Point:
         else:
             raise Exception('Arg is not a Point type')
 
+    def length(self, arg):
+        if isinstance(arg, self.__class__):
+            # По формуле Хряпы))
+            return (((arg.x_coord - self.x_coord) ** 2) + ((arg.y_coord - self.y_coord) ** 2)) ** 0.5
+        else:
+            raise Exception('Arg is not a Point type')
 
 class Triangle:
     def __init__(self, a: Point, b: Point, c: Point):
@@ -34,10 +40,9 @@ class Triangle:
                 self.a = a
                 self.b = b
                 self.c = c
-                # По формуле Хряпы))
-                self.a_b_length = (((b.x_coord - a.x_coord) ** 2) + ((b.y_coord - a.y_coord) ** 2)) ** 0.5
-                self.b_c_length = (((c.x_coord - b.x_coord) ** 2) + ((c.y_coord - b.y_coord) ** 2)) ** 0.5
-                self.c_a_length = (((a.x_coord - c.x_coord) ** 2) + ((a.y_coord - c.y_coord) ** 2)) ** 0.5
+                self.a_b_length = a.length(b)
+                self.b_c_length = b.length(c)
+                self.c_a_length = c.length(a)
             else:
                 raise Exception('Points have same coordinates')
         else:
