@@ -47,7 +47,7 @@ class Triangle:
         # По формуле Герона
         p = (self.a_b_length + self.b_c_length + self.c_a_length) * 0.5
         area = sqrt(p * (p - self.a_b_length) * (p - self.b_c_length) * (p - self.c_a_length))
-        print(round(area, 2))
+        print('Area =', round(area, 2))
         return
 
     def __iter__(self):
