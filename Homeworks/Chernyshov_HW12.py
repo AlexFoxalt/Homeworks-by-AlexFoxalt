@@ -27,8 +27,8 @@ class Point:
             raise Exception('Arg is not a Point type')
 
     def length(self, arg):
+        """По формуле Хряпы))"""
         if isinstance(arg, self.__class__):
-            # По формуле Хряпы))
             return (((arg.x_coord - self.x_coord) ** 2) + ((arg.y_coord - self.y_coord) ** 2)) ** 0.5
         else:
             raise Exception('Arg is not a Point type')
@@ -50,7 +50,7 @@ class Triangle:
             raise Exception('Incorrect type of data')
 
     def area_of_triangle(self):
-        # По формуле Герона
+        """По формуле Герона"""
         p = (self.a_b_length + self.b_c_length + self.c_a_length) * 0.5
         area = sqrt(p * (p - self.a_b_length) * (p - self.b_c_length) * (p - self.c_a_length))
         print('Area =', round(area, 2))
