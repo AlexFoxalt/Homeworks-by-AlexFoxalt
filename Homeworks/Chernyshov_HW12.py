@@ -64,5 +64,5 @@ figure1 = Triangle(Point(0, 0), Point(5, 5), Point(0, 5))
 # figure3 = Triangle(Point(0, 0), Point(0, 0), Point(0, 0))
 
 figure1.area_of_triangle()
-for x in figure1:
-    print(x)
+for point in figure1:
+    print(point)
