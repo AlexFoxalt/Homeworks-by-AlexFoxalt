@@ -17,13 +17,20 @@ class Point:
         else:
             raise TypeError('Not int')
 
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if (self.x_coord, self.y_coord) == (other.x_coord, other.y_coord):
+                return True
+            else:
+                return False
+        else:
+            raise Exception('Arg is not a Point type')
+
 
 class Triangle:
     def __init__(self, a: Point, b: Point, c: Point):
         if isinstance(a, Point) and isinstance(b, Point) and isinstance(c, Point):
-            if (a.x_coord, a.y_coord) != (b.x_coord, b.y_coord) and \
-                    (b.x_coord, b.y_coord) != (c.x_coord, c.y_coord) and \
-                    (c.x_coord, c.y_coord) != (a.x_coord, a.y_coord):
+            if a != b and b != c and c != a:
                 self.a = a
                 self.b = b
                 self.c = c
