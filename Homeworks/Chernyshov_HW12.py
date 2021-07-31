@@ -33,6 +33,7 @@ class Point:
         else:
             raise Exception('Arg is not a Point type')
 
+
 class Triangle:
     def __init__(self, a: Point, b: Point, c: Point):
         if isinstance(a, Point) and isinstance(b, Point) and isinstance(c, Point):
