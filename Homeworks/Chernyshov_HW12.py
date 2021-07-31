@@ -60,7 +60,7 @@ class Triangle:
 
 figure1 = Triangle(Point(0, 0), Point(5, 5), Point(0, 5))
 # Проверка 'уродцев'
-# figure2 = Triangle(Point('0', '0'), Point(False, True), Point(0, 0))
+# figure2 = Triangle(('0', '0'), Point(False, True), Point(0, 0))
 # figure3 = Triangle(Point(0, 0), Point(0, 0), Point(0, 0))
 
 figure1.area_of_triangle()
