@@ -58,7 +58,7 @@ class Money:
                 if data['cc'] == self.cc:
                     val = data['rate']
                     date = data['exchangedate']
-            print(f'The {self.cc} to UAH exchange rate on {date} is {val}')
+                    print(f'The {self.cc} to UAH exchange rate on {date} is {val}')
         except:
             raise Exception('Something went wrong')
 
