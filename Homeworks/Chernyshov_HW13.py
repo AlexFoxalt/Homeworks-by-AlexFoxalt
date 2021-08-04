@@ -1,6 +1,5 @@
 """Чернышов HW13"""
 import requests
-from json import load
 
 """Подключитесь к API НБУ ( документация тут https://bank.gov.ua/ua/open-data/api-dev ), получите текущий курс валют и
  запишите его в TXT-файл в таком формате:
