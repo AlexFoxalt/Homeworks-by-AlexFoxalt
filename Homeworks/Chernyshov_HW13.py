@@ -14,8 +14,8 @@ my_url = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json'
 
 try:
     res = requests.get(my_url)
-except Exception as error:
-    print(error)
+except:
+    raise Exception('Something went wrong')
 
 try:
     with open('Currency.txt', 'w') as txt_file:
@@ -23,8 +23,8 @@ try:
         for num, value in enumerate(res.json()):
             num = str(num + 1) + '.'
             txt_file.write('\n' + num + value['txt'] + ' to UAH: ' + str(value['rate']))
-except Exception as error:
-    print(error)
+except:
+    raise Exception('Something went wrong')
 
 """2. * Пользователь вводит название валюты и дату, программа возвращает пользователю курс гривны к этой валюте за 
 указаную дату используя API НБУ. Формат ввода пользователем данных - на ваше усмотрение. Реализовать с помощью ООП!"""
@@ -46,8 +46,8 @@ class Money:
 
         try:
             self.data = requests.get(self.my_url, params={'date': self.date, 'format': 'json'})
-        except Exception as error:
-            print(error)
+        except:
+            raise Exception('Something went wrong')
 
     def currency(self):
         """Main func, will show you actual currency on your date"""
@@ -59,15 +59,15 @@ class Money:
                     val = data['rate']
                     date = data['exchangedate']
             print(f'The {self.cc} to UAH exchange rate on {date} is {val}')
-        except Exception as error:
-            print(error)
+        except:
+            raise Exception('Something went wrong')
 
     def cc_list(self):
         """If you want to know all possible cc's in this bank"""
         try:
             print(list(data['cc'] + " = " + data['txt'] for data in self.data.json()))
-        except Exception as error:
-            print(error)
+        except:
+            raise Exception('Something went wrong')
 
 
 ex1 = Money('20210804', 'EUR')
