@@ -64,7 +64,10 @@ class Money:
 
     def cc_list(self):
         """If you want to know all possible cc's in this bank"""
-        print(list(data['cc'] + " = " + data['txt'] for data in self.data.json()))
+        try:
+            print(list(data['cc'] + " = " + data['txt'] for data in self.data.json()))
+        except Exception as error:
+            print(error)
 
 
 ex1 = Money('20210804', 'EUR')
