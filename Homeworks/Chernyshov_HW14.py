@@ -23,7 +23,7 @@ def find_license_plate(text):
 
 
 some_string1 = 'Продаю машину с гос. номером AA1234BB'
-some_string2 = 'Продаю мопед, гос.номер - 12 123-45АВ'
+some_string2 = 'Продаю мопед, гос.номер-12 123-45АВ'
 some_string3 = 'Потерял номера a12345ВС, прошу вернуть за вознаграждение'
 some_string4 = '11BHBH11 вн0001вн ВН11 11ВН ВНВНВНВН Вн1111ВН'
 print(find_license_plate(some_string1))
@@ -56,8 +56,8 @@ class Plates:
         return res if res else 'Ничего не найдено'
 
 
-some_text_RUS = 'Мои номера-ВН1111ВН, а мои номера-ВН2222ВН, и мои номера а12345ВС, твои номера 12 123-45АВ?'
-some_text_LAT = 'Мои номера-BH1111BH, а мои номера-BH2222BH, и мои номера a12345BC, твои номера 12 123-45AB?'
+some_text_RUS = 'Мои номера-ВН1111ВН, а мои номера-ВН2222ВН, и мои номера а12345ВС, твои номера 12 123-45АВ?'  # ВН = вн
+some_text_LAT = 'Мои номера-BH1111BH, а мои номера-BH2222BH, и мои номера a12345BC, твои номера 12 123-45AB?'  # BH = bh
 some_text_TRASH = '11BHBH11 вн0001вн ВН11 11ВН ВНВНВНВН Вн1111ВН'
 some_string5 = Plates(some_text_RUS)
 some_string6 = Plates(some_text_LAT)
