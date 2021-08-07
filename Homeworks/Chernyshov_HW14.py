@@ -7,13 +7,15 @@ import re
 помощью регулярных выражений. Функция принимает строку и возвращает None если вся строка не является номерным знаком. 
 Если является номерным знаком - возвращает саму строку."""
 
+type1 = re.compile(r'[А-ЯA-Z]{2}[0-9]{4}[А-ЯA-Z]{2}')
+type2 = re.compile(r'[0-9]{2} [0-9]{3}-[0-9]{2}[А-ЯA-Z]{2}')
+type3 = re.compile(r'[а-яa-z][0-9]{5}[А-ЯA-Z]{2}')
+TYPES_LIST = [type1, type2, type3]
+
 
 def find_license_plate(text):
-    type1 = re.compile(r'[А-ЯA-Z]{2}[0-9]{4}[А-ЯA-Z]{2}')
-    type2 = re.compile(r'[0-9]{2} [0-9]{3}-[0-9]{2}[А-ЯA-Z]{2}')
-    type3 = re.compile(r'[а-яa-z][0-9]{5}[А-ЯA-Z]{2}')
-    find_list = [type1, type2, type3]
-    for type_latin in find_list:
+    global TYPES_LIST
+    for type_latin in TYPES_LIST:
         content = type_latin.search(text)
         if content:
             return f'Найдено: {content.group()} в {content.span()}'
@@ -43,12 +45,9 @@ class Plates:
             raise Exception('Not str type')
 
     def class_find_license_plate(self):
-        type1 = re.compile(r'[А-ЯA-Z]{2}[0-9]{4}[А-ЯA-Z]{2}')
-        type2 = re.compile(r'[0-9]{2} [0-9]{3}-[0-9]{2}[А-ЯA-Z]{2}')
-        type3 = re.compile(r'[а-яa-z][0-9]{5}[А-ЯA-Z]{2}')
-        find_list = [type1, type2, type3]
+        global TYPES_LIST
         container = []
-        for standard in find_list:
+        for standard in TYPES_LIST:
             for symbol in standard.findall(self.text):
                 container.append(symbol)
         res = []
