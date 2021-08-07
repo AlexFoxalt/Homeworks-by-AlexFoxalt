@@ -51,10 +51,10 @@ class Plates:
         for standard in find_list:
             for symbol in standard.findall(self.text):
                 container.append(symbol)
-        res_dict = {}
+        res = []
         for num, item in enumerate(container):
-            res_dict.update({num + 1: item})
-        return res_dict if res_dict else 'Ничего не найдено'
+            res.append(str(num + 1) + ': ' + item)
+        return res if res else 'Ничего не найдено'
 
 
 some_text_RUS = 'Мои номера-ВН1111ВН, а мои номера-ВН2222ВН, и мои номера а12345ВС, твои номера 12 123-45АВ?'
